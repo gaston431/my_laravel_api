@@ -1,0 +1,94 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/posts": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Get a list of posts",
+                "operationId": "92f08c82044f01535382e3f0785785b0",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Post a post",
+                "operationId": "c599878a9a0c89930a40d45748861909",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/v1/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Show a post",
+                "operationId": "0069cd5c0ca8e03cba742cbb20274f9f",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Update a post",
+                "operationId": "7e7660cc2799c1e930d42e942859f429",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Delete a post",
+                "operationId": "e48317841049b9e17c4f63d5b5206fce",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Posts",
+            "description": "Posts"
+        }
+    ]
+}
