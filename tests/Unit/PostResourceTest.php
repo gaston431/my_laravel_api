@@ -3,14 +3,13 @@
 namespace Tests\Unit;
 
 use App\Http\Resources\PostResource;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Http\Resources\UserResource;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 // use PHPUnit\Framework\TestCase;
 use Tests\TestCase;
 
 class PostResourceTest extends TestCase
 {
-    use HasFactory;
     /**
      * A basic unit test example.
      */
@@ -19,16 +18,21 @@ class PostResourceTest extends TestCase
         $this->assertTrue(true);
     } */
 
-    use RefreshDatabase;
     public function testCorrectDataIsReturnedInResponse()
     {
-        $resource = (new PostResource($post = \App\Models\Post::factory()->make()))->jsonSerialize();
+        $user = \App\Models\User::factory()->create();
+        $post = \App\Models\Post::factory()->create(["user_id" => $user->id]);
         
-        $this->assertArrayHasKey('title', $post);
-        $this->assertSame($post->title, $post->title);
+        $resource = (new PostResource($post))->jsonSerialize();
+        
+        $this->assertArrayHasKey('title', $resource);
+
+        $this->assertInstanceOf(UserResource::class, $resource["user"]);
+        
+        // $this->assertSame($post->title, $post->title);
         /* $this->assertArraySubset([
             'title' => $post->title,
-            'content' => $post->rating
+            'content' => $post->content
         ], $resource); */
     }
 
