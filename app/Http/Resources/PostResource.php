@@ -22,6 +22,7 @@ class PostResource extends JsonResource
             'content' => $this->content,
             'likes' => $this->likes,
             'user' => new UserResource($this->user)
+            //'user' => new UserResource($this->whenLoaded('user')),
         ];
     
     }

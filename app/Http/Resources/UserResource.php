@@ -16,8 +16,10 @@ class UserResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            // 'posts' => PostResource::collection($this->whenLoaded($this->posts)),
-            // $this->mergeWhen($this->posts->count > 10, ['new_attribute' => 'attribute value'])
+            'posts' => PostResource::collection($this->whenLoaded('posts')),
+            $this->mergeWhen($this->posts->count() == 1, [
+                'new_attribute' => 'attribute value'
+            ])
         ];
     }
 }
