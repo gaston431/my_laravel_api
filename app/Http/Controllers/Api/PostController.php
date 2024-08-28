@@ -55,7 +55,7 @@ class PostController extends Controller
         ]);
         
         $post = Post::create(array_merge($request->all(), [
-            'user_id' =>$request->user()->id]
+            'user_id' => $request->user()->id]
         ));
 
         return new PostResource($post);
