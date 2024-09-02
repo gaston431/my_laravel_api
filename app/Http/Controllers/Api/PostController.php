@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\PostsCollection;
 use App\Models\Post;
@@ -48,12 +49,12 @@ class PostController extends Controller
      *     @OA\Response(response=400, description="Invalid request")
      * )
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $request->validate([
+        /* $request->validate([
             "title"=> "required",
-        ]);
-        
+        ]); */
+
         $post = Post::create(array_merge($request->all(), [
             'user_id' => $request->user()->id]
         ));
@@ -94,7 +95,7 @@ class PostController extends Controller
      *     @OA\Response(response=400, description="Invalid request")
      * )
      */
-    public function update(Request $request, Post $post)
+    public function update(StorePostRequest $request, Post $post)
     {
         $post->update($request->all());
         return new PostResource($post);;
